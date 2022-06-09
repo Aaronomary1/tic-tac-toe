@@ -56,7 +56,7 @@ let player2 = {
 
 // Logic Controller
 let game = (function(){
-    let emojis = ["👹", "😼", "🐍", "👽", "🥵", "🤡", "😈", "🥶", "🤢"]
+    let emojis = ["👹", "😼", "💀", "🤢", "🥵", "🤡", "😈", "🥶", "👽"]
     let container = document.querySelector("#game-container");
     let board = document.querySelector("#game-board");
     let emoji = document.querySelector("#emoji-board");
