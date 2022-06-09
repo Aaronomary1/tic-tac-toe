@@ -63,7 +63,6 @@ let game = (function(){
     let humanButton = document.querySelector("#human"); 
     let buttonArea = document.querySelector("#button-area");
     let pickEmoji = document.createElement("h3");
-    let round = 0;
     let playerNumber = 2;
     let nameForm = document.querySelector("#name-form");
     let turn = 0;
@@ -159,9 +158,9 @@ let game = (function(){
     // Player Turn
     let playerTurn = function(player, target){
         if (player == player2){
-            pickEmoji.textContent = `${player1.name}'s turn`
+            pickEmoji.textContent = `${player1.name}'s turn ${player1.shape}`
         } else {
-            pickEmoji.textContent = `${player2.name}'s turn`
+            pickEmoji.textContent = `${player2.name}'s turn ${player2.shape}`
         }
         
         if (player.shape == " "){
@@ -202,24 +201,11 @@ let game = (function(){
         }
     }
     // Start Game
-    let start = function(){
-        reset()
-        for (let i = 0; i < 9; i++){
-            playerTurn(player1);
-            playerTurn(player2);
-        }
-        console.log("Game Over!")
-        round = 0;
-    }
-
-    let eventListener = function (){ 
+    let start = function (){ 
         humanButton.addEventListener("click", function(){
             buttonArea.style.display = "none";
             nameForm.style.display ="flex";
-            reset();
-
-            
-            
+            reset();  
         })
         nameForm.addEventListener("submit", function(e){
             e.preventDefault();
@@ -242,7 +228,7 @@ let game = (function(){
                 gameBoard.renderBoard();
                 emoji.style.display = "none";
                 board.style.display = "grid";
-                pickEmoji.textContent = `${player1.name}'s turn`;
+                pickEmoji.textContent = `${player1.name}'s turn ${player1.shape}`;
             }
         })
         
@@ -250,8 +236,7 @@ let game = (function(){
     }
     return{
         start:start,
-        eventListener:eventListener
     }
 })();
 
-game.eventListener();
+game.start();
