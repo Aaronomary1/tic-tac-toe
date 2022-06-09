@@ -66,6 +66,7 @@ let game = (function(){
     let round = 0;
     let playerNumber = 2;
     let nameForm = document.querySelector("#name-form");
+    let turn = 0;
     let renderEmojis = function(){
         for (let i = 0; i < 9; i++){
             emoji.innerHTML += `<span style="cursor:pointer" id="${i}">${emojis[i]}</span>`;
@@ -135,6 +136,24 @@ let game = (function(){
                 return true
             }
         }
+        turn++
+        if (turn == 9){
+            pickEmoji.remove();
+            board.style.display = "none";
+            let winnerTag = document.createElement("h3")
+            winnerTag.style.marginTop = "-35px";
+            let newGame = document.createElement("button")
+            winnerTag.textContent = "☠️ Draw Game ☠️"
+            newGame.textContent = "Reset"
+            container.append(winnerTag);
+            container.append(newGame)
+            newGame.addEventListener("click", function(){
+                newGame.remove();
+                winnerTag.remove();
+                buttonArea.style.display = "flex";            
+            });
+            turn = 0;
+        }
         
     }
     // Player Turn
@@ -174,6 +193,7 @@ let game = (function(){
                     winnerTag.remove();
                     buttonArea.style.display = "flex";            
                 });
+                turn = 0;
 
             }
         }
