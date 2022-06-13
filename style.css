@@ -1,6 +1,5 @@
-body{
+    body{
     font-family: 'Roboto', sans-serif;
-    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -23,7 +22,7 @@ button{
     text-decoration: none;
     display: inline-block;
     font-size: 25px;
-    width:400px;
+    margin:20px;
     height:75px;
     border-radius: 5px;
 }
@@ -37,7 +36,8 @@ button{
 }
 #button-area{
     display:flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    place-content: center;
 }
 #game-board{
     font-size:75px;
